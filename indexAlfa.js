@@ -14,9 +14,9 @@ app.get('/alfs/:idal', (req, res) => {
     let nome;
 
     if (!(isNaN(idAl))) {
-        nome = colecaoAl.find(u => u.id === id);
+        nome = colecaoAl.find(u => u.id === idAl);
         if (!nome) {
-            mensagemErro = 'Letra não encontrado';
+            mensagemErro = 'Letra não encontrada';
         }
     } else {
         mensagemErro = 'Requisição inválida';
