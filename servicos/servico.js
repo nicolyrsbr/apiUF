@@ -10,7 +10,7 @@ export const buscarUfsPorNome = (nomeUf) => {
     return colecaoUf.filter(uf =>
         uf.nome.toLowerCase().includes(nomeUf.toLowerCase())
     );
-};
+}
 
 // Retorna o id especificado
 export const buscarUfPorId = (id) => {
