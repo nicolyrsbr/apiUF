@@ -1,5 +1,5 @@
 import express from 'express';
-import { buscarUfs, buscarUfPorId, buscarUfsPorNome } from '../servicos/servico.js';
+import { buscarUfs, buscarUfPorId, buscarUfsPorNome, buscarUfPorSigla, listarPorInicial} from './servicos/servico.js';
 
 const app = express();
 
@@ -25,6 +25,29 @@ app.get('/ufs/:iduf', (req, res) => {
         res.status(400).send({ "erro": "Requisição inválida" });
     } else {
         res.status(404).send({ "erro": "UF não encontrada" });
+    }
+});
+
+app.get('/ufs/sigla/:sigla', (req, res) => {
+    const siglaUf = req.params.sigla;
+    const uf = buscarUfPorSigla(siglaUf);
+
+    if(uf) {
+        res.json(uf);
+    } else {
+        res.status(404).send({"erro": "UF não encontrada"});
+    }
+})
+
+
+app.get('/ufs/inicial/:inicial', (req, res) => {
+    const inicialUf = req.params.inicial;
+    const resultado = listarPorInicial(inicialUf);
+
+    if(resultado.length > 0) {
+        res.json(resultado);
+    } else {
+        res.status(404).send({"erro": "Nenhuma UF encontrada com essa inicial"})
     }
 });
 
