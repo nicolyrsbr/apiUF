@@ -1,4 +1,4 @@
-import colecaoGames from "../GameDados/dadosGames";
+import colecaoGames from "../GameDados/dadosGames.js";
 
 //Listar todos os jogos
 export const listarjogos = () => {
@@ -13,10 +13,18 @@ export const buscarPorId = (id) => {
 
 //Buscar jogos por gênero
 export const buscarPorGenero = (generoGame) => {
-    return colecaoGames.find(genero => game.genero.toLowerCase() === generoGame.toLowerCase());
+    return colecaoGames.filter(game => game.genero.toLowerCase().includes(generoGame.toLowerCase()));
 }
 
 //Buscar jogos por plataforma
 export const buscarPorPlataforma = (plataformaGame) => {
-    return colecaoGames.find(plataformas => game.platafomras.toLowerCase() === plataformaGame.toLowerCase());
+    return colecaoGames.filter(game => game.plataformas.toLowerCase().includes(plataformaGame.toLowerCase()));
+}
+
+//Buscar jogos por nome (busca parcial e case-insensitive)
+export const buscarPorNome = (nomeGame) => {
+    return colecaoGames.filter(game =>
+        typeof game.nome === 'string' &&
+        game.nome.toLowerCase().includes(nomeGame.toLowerCase())
+    );
 }
