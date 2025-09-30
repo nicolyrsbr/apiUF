@@ -1,4 +1,4 @@
-import colecaoGames from "../GameDados/dadosGames";
+import colecaoGames from "../../../GameDados/dadosGames";
 
 //Listar todos os jogos
 export const listarjogos = () => {

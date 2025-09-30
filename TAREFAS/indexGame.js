@@ -1,7 +1,7 @@
 import express from 'express';
 import {
     listarjogos, buscarPorId, buscarPorGenero, buscarPorPlataforma
-} from './GameServico/servicoGames.js'
+} from './GAME/GameServico/servicoGames.js'
 
 
 const app = express();
